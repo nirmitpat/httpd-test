@@ -1,0 +1,13 @@
+---
+# tasks file for httpd
+- name: installing httpd
+  yum:
+          name: httpd
+          state: present
+  notify: restart httpd
+- name: copying files
+  copy:
+          src: index.html
+          dest: "{{dest}}/index.html"
+          mode: 0766
+  notify: restart httpd          
